@@ -1,0 +1,47 @@
+
+Develop a Flask-based Personal Expense Tracker Web Application that allows users to register, log in, and manage their personal expenses through a web interface rendered using Jinja2 templates.
+
+The application must include user authentication using session-based login. Users should be able to register with name, email, and password, where the password must be securely hashed before storing it in the database. After logging in, users should be redirected to a dashboard page.
+
+The dashboard page must be rendered using Jinja templates and should display a summary of the user’s expenses including:
+
+* Total number of expenses
+* Total amount spent
+* A table listing all expenses
+
+Implement pagination for the expense list:
+- Display a limited number of expenses per page (e.g., 5 or 10 per page)
+- Provide navigation controls (Next, Previous, Page Numbers)
+- Maintain filters/search query while paginating
+
+Each expense should contain the following fields: title, amount, category (Food, Travel, Bills, Shopping, Other), and date.
+
+Users must be able to perform CRUD operations on their expenses:
+
+* Add a new expense using a form
+* View all their expenses
+* Update an existing expense
+* Delete an expense
+
+Users must not be able to access or modify expenses belonging to other users.
+
+The dashboard should also support filtering and searching functionality:
+
+* Filter expenses by category
+* Filter expenses by date range
+* Search expenses by title using query parameters
+
+Use Jinja loops and conditionals to dynamically display expense data and summaries in the HTML templates. Implement template inheritance using a base template for consistent layout across pages.
+
+The application must implement Flask request hooks:
+
+* Use `before_request` to check whether a user is authenticated before accessing protected routes.
+* Use `after_request` to add a custom response header such as `X-App-Name: ExpenseTracker`.
+
+Implement custom error handling by creating user-friendly pages for 404 (Page Not Found) and 403 (Unauthorized Access) errors.
+
+Use any database.
+
+Include basic CSS styling using static files to make forms, tables, and the dashboard readable.
+
+Structure the project using a clean Flask architecture including Blueprints, models, configuration files, templates, and static assets.

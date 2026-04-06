@@ -1,32 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="" method="post">
-        <!-- Each expense should contain the following fields: title, amount, category (Food, Travel, Bills, Shopping, Other), and date. -->
-        <label for="">Title</label>
-        <input type="text" name="title" id="">
-        <br>
-        <label for="">amount</label>
-        <input type="number" name="number" id="">
-        <br>
-        <label for="">Date</label>
-        <input type="date" name="number" id="">
-        <br>
-        <label for="">Category</label>
-        <select name="category" id="">
-            <option value="Category" disabled>Category</option>
+{% extends "layout.html" %}
+{% block body %}
+    <div style="height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; background-color: #f8fafc; font-family: 'Inter', system-ui, -apple-system, sans-serif;">
+    
+    <form action="" method="post" style="background-color: #ffffff; padding: 40px; display: flex; flex-direction: column; border-radius: 16px; width: 100%; max-width: 400px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); border: 1px solid #e2e8f0;">
+        
+        <h2 style="margin: 0 0 24px 0; text-transform: capitalize; font-size: 24px; font-weight: 700; text-align: center; color: #1e293b;">
+            Add New Expense
+        </h2>
+        
+        <label style="font-size: 14px; font-weight: 600; color: #64748b; margin-bottom: 8px;">Title</label>
+        <input type="text" name="title" placeholder="e.g. Grocery Shopping" required 
+            style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 16px; outline: none; transition: border-color 0.2s; margin-bottom: 20px;">
+        
+        <label style="font-size: 14px; font-weight: 600; color: #64748b; margin-bottom: 8px;">Amount ($)</label>
+        <input type="number" name="amount" placeholder="0.00" step="0.01" required 
+            style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 16px; outline: none; margin-bottom: 20px;">
+        
+        <label style="font-size: 14px; font-weight: 600; color: #64748b; margin-bottom: 8px;">Date</label>
+        <input type="date" name="date" required 
+            style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 16px; outline: none; color: #1e293b; margin-bottom: 20px;">
+        
+        <label style="font-size: 14px; font-weight: 600; color: #64748b; margin-bottom: 8px;">Category</label>
+        <select name="category" required 
+            style="padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 16px; background-color: white; outline: none; cursor: pointer; margin-bottom: 30px;">
+            <option value="" selected disabled>Select a category</option>
             <option value="Food">Food</option>
             <option value="Travel">Travel</option>
             <option value="Bills">Bills</option>
             <option value="Shopping">Shopping</option>
+            <option value="Other">Other</option>
         </select>
-        <br>
 
+        <button type="submit" 
+            style="background-color: #4f46e5; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background-color 0.2s; box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.4);">
+            Save Expense
+        </button>
+
+        <a href="{{ url_for('exp.dashboard') }}" style="text-align: center; margin-top: 16px; font-size: 14px; color: #64748b; text-decoration: none; font-weight: 500;">
+            Go Back
+        </a>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}

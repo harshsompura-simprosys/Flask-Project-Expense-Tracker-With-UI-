@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, jsonify
+from flask import Blueprint, render_template, request, redirect, jsonify,url_for
 from db import users_collection
 from flask_jwt_extended import create_access_token, set_access_cookies,unset_jwt_cookies
 from werkzeug.security import generate_password_hash ,check_password_hash
@@ -7,6 +7,11 @@ from werkzeug.security import generate_password_hash ,check_password_hash
 
 auth_bp = Blueprint("auth", __name__,template_folder="./templates")
 
+
+
+@auth_bp.route("/")
+def main_page():
+    return render_template("index.html")
 
 
 @auth_bp.route("/register", methods=["GET"])
@@ -43,8 +48,7 @@ def login():
 
     
     user = users_collection.find_one({
-        "username": data["username"],
-        "password": data["password"]
+        "username": data["username"]
     })
     if user and check_password_hash(user["password"],data["password"]):
         token = create_access_token(identity=data["username"])
